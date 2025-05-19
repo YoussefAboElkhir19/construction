@@ -134,7 +134,7 @@ server/
 
 - Node.js & npm
 - PHP & Composer
-- MySQL/SQLite
+- MySQL
 
 ### Steps
 
