@@ -18,7 +18,7 @@ const Contact_us = () => {
 
                     <div className="section-header text-center">
                         <h2>Contact Us</h2>
-                        <p> The construction industry is a major driver of economic growth</p>
+                        <h3> The construction industry is a major driver of economic growth</h3>
                     </div>
 
                     <div className="row mt-5">

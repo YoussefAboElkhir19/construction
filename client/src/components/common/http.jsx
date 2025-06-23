@@ -1,5 +1,5 @@
-export const apiUrl = "http://backend.test/api/";
-export const fileUrl = "http://backend.test/";
+export const apiUrl = "http://server.test/api/";
+export const fileUrl = "http://server.test/";
 
 export const token = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo')); // Ensure the key matches

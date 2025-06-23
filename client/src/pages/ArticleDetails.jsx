@@ -4,33 +4,31 @@ import Footer from '../components/common/Footer'
 import Hero from '../components/common/Hero'
 import { Link, useParams } from 'react-router-dom'
 import { apiUrl, fileUrl } from '../components/common/http'
-import Testimonials from '../components/common/Testimonials'
-
-const ServiceDetails = () => {
+function ArticleDetails() {
     const params = useParams();
-    const [services, setServices] = useState([]);
-    const [service, setService] = useState([]);
+    const [articles, setArticles] = useState([]);
+    const [article, setArticle] = useState([]);
     // fetch single serive
-    const fetchServices = async () => {
-        const res = await fetch(apiUrl + 'get-services', {
+    const fetchArticle = async () => {
+        const res = await fetch(apiUrl + 'get-articles', {
             'method': 'GET',
         });
         const result = await res.json();
         console.log(result);
-        setServices(result.data);
+        setArticles(result.data);
     }
     // fetch single serive
-    const fetchSingleService = async () => {
-        const res = await fetch(apiUrl + 'get-service/' + params.id, {
+    const fetchSingleArticle = async () => {
+        const res = await fetch(apiUrl + 'get-article/' + params.id, {
             'method': 'GET',
         });
         const result = await res.json();
         // console.log(result);
-        setService(result.data);
+        setArticle(result.data);
     }
     useEffect(() => {
-        fetchServices();
-        fetchSingleService();
+        fetchArticle();
+        fetchSingleArticle();
 
     }, [params.id]);
     return (
@@ -38,7 +36,7 @@ const ServiceDetails = () => {
             <Header />
             <Hero
                 preheading='Quality. Integrity. Vakue'
-                heading={`${service.title}`}
+                heading={`${article.title}`}
                 text='' />
             <section className='section-10'>
                 <div className="container py-5">
@@ -46,16 +44,16 @@ const ServiceDetails = () => {
                         <div className="col-md-3">
                             <div className="card shadow border-0 sidebar">
                                 <div className="card-body p-4">
-                                    <h3 className='my-3'>Our Service</h3>
+                                    <h3 className='my-3'>Articles</h3>
                                     <ul>
                                         {
-                                            services && services.map(service => {
+                                            articles && articles.map(article => {
                                                 return (
 
 
-                                                    <li key={service.id} className='py-2'>
+                                                    <li key={article.id} className='py-2'>
 
-                                                        <Link to={`/service/${service.id}`} >{service.title}</Link>
+                                                        <Link to={`/article/${article.id}`} >{article.title}</Link>
                                                     </li>
                                                 );
 
@@ -70,19 +68,19 @@ const ServiceDetails = () => {
                         <div className="col-md-9">
                             <div data-aos="zoom-in"
                                 data-aos-delay="200">
-                                <img className='w-100 border rounded-lg' src={`${fileUrl}upload/services/large/${service.image}`} alt="Service Image" />
+                                <img className='w-100 border rounded-lg' src={`${fileUrl}upload/articles/large/${article.image}`} alt="article Image" />
                             </div>
                             <div className="p-4">
                                 <div className='d-flex align-items-center mb-3'>
-                                    <span className="text-secondary me-2 fs-4" >Title:</span>
-                                    <span className="fs-5">{service.title}</span>
+                                    <span className="text-secondary me-2 fs-4" >Author:</span>
+                                    <span className="fs-5">{article.author}</span>
                                 </div>
                                 <div className='mb-3'>
                                     <h5 className="text-secondary mb-2">Content:</h5>
                                     <div
                                         className="bg-light p-3 rounded"
                                         style={{ minHeight: 80 }}
-                                        dangerouslySetInnerHTML={{ __html: service.content }}
+                                        dangerouslySetInnerHTML={{ __html: article.content }}
                                     />
                                 </div>
                             </div>
@@ -90,7 +88,11 @@ const ServiceDetails = () => {
 
                         </div>
                     </div>
+                    {/* Testimonial */}
+                    <div className="row">
+                        <div className="col-md-12"></div>
 
+                    </div>
 
                 </div>
             </section>
@@ -99,4 +101,4 @@ const ServiceDetails = () => {
     )
 }
 
-export default ServiceDetails
+export default ArticleDetails

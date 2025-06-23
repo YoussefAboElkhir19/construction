@@ -34,10 +34,10 @@ const Project = () => {
             <section className='section-3 py-4'>
                 <div className="container py-4">
                     <div className="section-header text-center">
-                        <span data-aos="fade-up"
-                            data-aos-delay="400">our project</span>
-                        <h2 data-aos="fade-left"
-                            data-aos-delay="200">Discover our divers range of project</h2>
+                        <h2 data-aos="fade-up"
+                            data-aos-delay="400">our project</h2>
+                        <h3 data-aos="fade-left"
+                            data-aos-delay="200">Discover our divers range of project</h3>
                         <p data-aos="fade-rigth"
                             data-aos-delay="400"> The construction industry is a major driver of economic growth</p>
                     </div>
@@ -64,9 +64,10 @@ const Project = () => {
 
                                                 </div>
                                                 <div className="service-content">
-                                                    <p>{project.content}</p>
+                                                    <p>{project.short_desc}</p>
+
                                                 </div>
-                                                <Link to={`/projects/${project.id}`} className='btn btn-primary small'>Read More</Link>
+                                                <Link to={`/project/${project.id}`} className='btn btn-primary small'>Read More</Link>
                                             </div>
 
                                         </div>

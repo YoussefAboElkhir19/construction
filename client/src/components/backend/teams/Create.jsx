@@ -9,9 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { apiUrl, token } from '../../common/http';
 import { toast } from 'react-toastify';
-
-const Create = () => {
-
+function Create() {
     const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
 
@@ -27,7 +25,7 @@ const Create = () => {
     const onSubmit = async (data) => {
         // newData contain data = title , slug , short_desc status and content = content 
         const newData = { ...data, "imageId": imageId }
-        const res = await fetch(apiUrl + 'testimonals', {
+        const res = await fetch(apiUrl + 'teams', {
             'method': 'POST',
             'headers': {
                 'Content-type': 'application/json',
@@ -42,7 +40,7 @@ const Create = () => {
         //Check Status
         if (result.status == true) {
             toast.success(result.message);
-            navigate('/admin/testimonals');
+            navigate('/admin/teams');
 
         } else {
 
@@ -83,7 +81,6 @@ const Create = () => {
                         <div className="col-md-3">
                             {/* Side Bar  */}
                             <SideBar />
-
                         </div>
                         <div className="col-md-9 dashbord">
                             {/* Main Dashbord  */}
@@ -91,40 +88,42 @@ const Create = () => {
                                 <div className="card-body p-5">
 
                                     <div className="d-flex justify-content-between align-items-center ">
-                                        <h4>Create New Testimonal</h4>
-                                        <Link to="/admin/testimonals" className='btn btn-primary'>Back</Link>
+                                        <h4>Create New Member Of Team</h4>
+                                        <Link to="/admin/teams" className='btn btn-primary'>Back</Link>
                                     </div>
                                     <hr />
                                     <form action="" onSubmit={handleSubmit(onSubmit)}>
 
+
                                         <div className="mb-3">
-                                            <label htmlFor="">Testimonal</label>
-                                            <textarea
-                                                placeholder='write short description'  {
-                                                ...register('testimonal', { required: 'testimonal is required ' }
+                                            <label htmlFor="">Name</label>
+                                            <input  {
+                                                ...register('name', { required: 'Name is required ' }
 
                                                 )
-                                                } type="text" title='short description' className={`form-control ${errors.testimonal && 'is-invalid'}`} rows={5} >
-                                            </textarea>
+                                            } type="text" placeholder='write name' className={`form-control ${errors.name && 'is-invalid'}`} />
                                             {/* errors will return when field validation fails  */}
-                                            {errors.testimonal && <p className='invalid-feedback'>{errors.testimonal?.message}</p>}
+                                            {errors.name && <p className='invalid-feedback'>{errors.name?.message}</p>}
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="">Citation</label>
+                                            <label htmlFor="">Job</label>
                                             <input  {
-                                                ...register('citation', { required: 'Citation is required ' }
+                                                ...register('job', { required: 'Job is required ' })
+
+                                            } type="text" placeholder='write job' className={`form-control ${errors.job && 'is-invalid'}`} />
+                                            {errors.job && <p className='invalid-feedback'>{errors.job?.message}</p>}
+
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="">URL</label>
+                                            <input  {
+                                                ...register('URL', { required: 'URL is required ' }
 
                                                 )
-                                            } type="text" placeholder='write citation' className={`form-control ${errors.citation && 'is-invalid'}`} />
-                                            {/* errors will return when field validation fails  */}
-                                            {errors.citation && <p className='invalid-feedback'>{errors.citation?.message}</p>}
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="">Designation</label>
-                                            <input  {
-                                                ...register('designation')
 
-                                            } type="text" placeholder='write designation' className='form-control' />
+                                            } type="text" placeholder='write URL' className={`form-control ${errors.URL && 'is-invalid'}`} />
+                                            {/* errors will return when field validation fails  */}
+                                            {errors.URL && <p className='invalid-feedback'>{errors.URL?.message}</p>}
 
                                         </div>
 
@@ -135,24 +134,8 @@ const Create = () => {
 
                                             />
                                         </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="">Status</label>
-                                            <select name="
-                                            " id=""
 
-                                                {
-                                                ...{
-                                                    ...register('status')
-
-
-                                                }
-                                                } className='form-control'>
-                                                <option value="1">Active</option>
-                                                <option value="0">Block</option>
-                                            </select>
-
-                                        </div>
-                                        <button disabled={isDisable} className='btn btn-success' type='submit'>Submit</button>
+                                        <button disabled={isDisable} className='mt-3 btn btn-success' type='submit'>Submit</button>
 
                                     </form>
 

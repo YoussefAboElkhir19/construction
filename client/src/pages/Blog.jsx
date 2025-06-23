@@ -5,6 +5,7 @@ import Hero from '../components/common/Hero'
 
 import { apiUrl, fileUrl } from '../components/common/http'
 import Bloghero from '../components/common/Bloghero'
+import { Link } from 'react-router-dom'
 
 const Blog = () => {
     const [articles, setArticle] = useState([]);
@@ -38,8 +39,8 @@ const Blog = () => {
                 <section className='section-6'>
                     <div className="container">
                         <div className="section-header text-center">
-                            <span>BLOG & NEWS</span>
-                            <h2>Articles $ blog posts</h2>
+                            <h2>BLOG & NEWS</h2>
+                            <h3>Articles $ blog posts</h3>
                             <p> The construction industry is a major driver of economic growth</p>
                         </div>
                         <div className="row">
@@ -61,7 +62,7 @@ const Blog = () => {
                                                         <a href="">{article.title}</a>
                                                     </div>
                                                     <div>
-                                                        <a href="" className='btn btn-primary small'>read more</a>
+                                                        <Link to={`/article/${article.id}`} className='btn btn-primary small'>Read More</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +79,9 @@ const Blog = () => {
 
                         </div>
 
+
                     </div>
+
 
                 </section>
             </main>

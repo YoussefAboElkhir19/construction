@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './context/Auth';
+import { apiUrl } from '../common/http';
 const Login = () => {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate()
@@ -19,7 +20,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         // fetch data 
-        const res = await fetch("http://backend.test/api/authenticate",
+        const res = await fetch(apiUrl + "authenticate",
             {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
@@ -48,12 +49,14 @@ const Login = () => {
     return (
 
         <>
-            <Header />
+            {/* <Header /> */}
             <main>
-                <div className="container d-flex justify-content-center align-items-center ">
-                    <div className="login-form my-5 ">
-                        <div className="card border-0 shadow ">
-                            <div className="card-body p-5">
+                <div className="container  min-vh-100 d-flex justify-content-center align-items-center"
+
+                >
+                    <div className="login-form my-5 d-flex justify-content-center align-items-center ">
+                        <div className="card border-0 shadow  ">
+                            <div className="card-body p-5 ">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <h3 className='mb-3'>Login Here</h3>
                                     <div className="mb-3">
@@ -106,7 +109,7 @@ const Login = () => {
                 </div>
             </main>
 
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

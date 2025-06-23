@@ -26,10 +26,10 @@ const Projecthero = () => {
         <section className='section-3 py-4'>
             <div className="container py-4">
                 <div className="section-header text-center">
-                    <span data-aos="fade-up"
-                        data-aos-delay="400">our project</span>
-                    <h2 data-aos="fade-left"
-                        data-aos-delay="200">Discover our divers range of project</h2>
+                    <h2 data-aos="fade-up"
+                        data-aos-delay="400">our project</h2>
+                    <h3 data-aos="fade-left"
+                        data-aos-delay="200">Discover our divers range of project</h3>
                     <p data-aos="fade-rigth"
                         data-aos-delay="400"> The construction industry is a major driver of economic growth</p>
                 </div>
@@ -70,7 +70,7 @@ const Projecthero = () => {
                 </div>
                 {/* Botton  */}
                 <div className='service-btn'>
-                    <Link to="/project" className='btn btn-primary large'  >view all projects</Link>
+                    <Link to="/project" className='btn btn-primary large'  >View All Projects</Link>
 
                 </div>
             </div>

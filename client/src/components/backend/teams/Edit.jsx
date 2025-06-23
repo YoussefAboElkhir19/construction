@@ -7,9 +7,9 @@ import Header from '../../common/Header'
 import { useForm } from "react-hook-form";
 import { apiUrl, token, fileUrl } from '../../common/http';
 import { toast } from 'react-toastify';
-const Edit = ({ placeholder }) => {
+function Edit() {
     const params = useParams();
-    const [testimonal, setTestimonal] = useState('');
+    const [team, setteam] = useState('');
     const [imageId, setImageId] = useState('');
     const [isDisable, setIsDisable] = useState(false);
 
@@ -22,7 +22,7 @@ const Edit = ({ placeholder }) => {
     } = useForm({
         // To GetVAlues 
         defaultValues: async () => {
-            const res = await fetch(apiUrl + 'testimonals/' + params.id, {
+            const res = await fetch(apiUrl + 'teams/' + params.id, {
                 'method': 'GET',
                 'headers': {
                     'Content-type': 'application/json',
@@ -34,12 +34,11 @@ const Edit = ({ placeholder }) => {
             const result = await res.json();
             console.log(result);
 
-            setTestimonal(result.data);
+            setteam(result.data);
             return {
-                testimonal: result.data.testimonal,
-                citation: result.data.citation,
-                designation: result.data.designation,
-                status: result.data.status,
+                name: result.data.name,
+                job: result.data.job,
+                URL: result.data.URL,
 
             }
         }
@@ -48,7 +47,7 @@ const Edit = ({ placeholder }) => {
     const onSubmit = async (data) => {
         // newData contain data = title , slug , short_desc status and content = content 
         const newData = { ...data, "imageId": imageId }
-        const res = await fetch(apiUrl + 'testimonals/' + params.id, {
+        const res = await fetch(apiUrl + 'teams/' + params.id, {
             'method': 'PUT',
             'headers': {
                 'Content-type': 'application/json',
@@ -63,7 +62,7 @@ const Edit = ({ placeholder }) => {
         //Check Status
         if (result.status == true) {
             toast.success(result.message);
-            navigate('/admin/testimonals');
+            navigate('/admin/teams');
 
         } else {
 
@@ -104,7 +103,6 @@ const Edit = ({ placeholder }) => {
                         <div className="col-md-3">
                             {/* Side Bar  */}
                             <SideBar />
-
                         </div>
                         <div className="col-md-9 dashbord">
                             {/* Main Dashbord  */}
@@ -112,74 +110,60 @@ const Edit = ({ placeholder }) => {
                                 <div className="card-body p-5">
 
                                     <div className="d-flex justify-content-between align-items-center ">
-                                        <h4>Edit  Testimonal</h4>
-                                        <Link to="/admin/testimonals" className='btn btn-primary'>Back</Link>
+                                        <h4>Edit Member Of Team</h4>
+                                        <Link to="/admin/teams" className='btn btn-primary'>Back</Link>
                                     </div>
                                     <hr />
                                     <form action="" onSubmit={handleSubmit(onSubmit)}>
 
+
                                         <div className="mb-3">
-                                            <label htmlFor="">Testimonal</label>
-                                            <textarea
-                                                placeholder='write short description'  {
-                                                ...register('testimonal', { required: 'testimonal is required ' }
+                                            <label htmlFor="">Name</label>
+                                            <input  {
+                                                ...register('name', { required: 'Name is required ' }
 
                                                 )
-                                                } type="text" title='short description' className={`form-control ${errors.testimonal && 'is-invalid'}`} rows={5} >
-                                            </textarea>
+                                            } type="text" placeholder='write name' className={`form-control ${errors.name && 'is-invalid'}`} />
                                             {/* errors will return when field validation fails  */}
-                                            {errors.testimonal && <p className='invalid-feedback'>{errors.testimonal?.message}</p>}
+                                            {errors.name && <p className='invalid-feedback'>{errors.name?.message}</p>}
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="">Citation</label>
+                                            <label htmlFor="">Job</label>
                                             <input  {
-                                                ...register('citation', { required: 'Citation is required ' }
+                                                ...register('job', { required: 'Job is required ' })
+
+                                            } type="text" placeholder='write job' className={`form-control ${errors.job && 'is-invalid'}`} />
+                                            {errors.job && <p className='invalid-feedback'>{errors.job?.message}</p>}
+
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="">URL</label>
+                                            <input  {
+                                                ...register('URL', { required: 'URL is required ' }
 
                                                 )
-                                            } type="text" placeholder='write citation' className={`form-control ${errors.citation && 'is-invalid'}`} />
+
+                                            } type="text" placeholder='write URL' className={`form-control ${errors.URL && 'is-invalid'}`} />
                                             {/* errors will return when field validation fails  */}
-                                            {errors.citation && <p className='invalid-feedback'>{errors.citation?.message}</p>}
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="">Designation</label>
-                                            <input  {
-                                                ...register('designation')
-
-                                            } type="text" placeholder='write designation' className='form-control' />
+                                            {errors.URL && <p className='invalid-feedback'>{errors.URL?.message}</p>}
 
                                         </div>
-
                                         <div className="md-3">
                                             <label htmlFor="">Image</label>
                                             <br />
                                             <input onChange={handelFile} type="file" className='form-control' />
 
                                         </div>
+
                                         <div className="p-3">
                                             {
-                                                testimonal.image && <img src={fileUrl + 'upload/testimonals/small/' + testimonal.image} alt="Imagetestimonal" />
+                                                team.image && <img src={fileUrl + 'upload/teams/small/' + team.image} alt="Imageteam" />
 
                                             }
 
                                         </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="">Status</label>
-                                            <select name="
-                                        " id=""
 
-                                                {
-                                                ...{
-                                                    ...register('status')
-
-
-                                                }
-                                                } className='form-control'>
-                                                <option value="1">Active</option>
-                                                <option value="0">Block</option>
-                                            </select>
-
-                                        </div>
-                                        <button disabled={isDisable} className='btn btn-primary' type='submit'>Update</button>
+                                        <button disabled={isDisable} className='mt-3 btn btn-primary' type='submit'>Update</button>
 
                                     </form>
 

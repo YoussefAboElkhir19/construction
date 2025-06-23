@@ -14,6 +14,7 @@ const SideBar = () => {
                     <li className='fs-6 fw-semibold mb-4'><Link to="/admin/projects">Projects</Link></li>
                     <li className='fs-6 fw-semibold mb-4'><Link to="/admin/articles">Article</Link></li>
                     <li className='fs-6 fw-semibold mb-4'><Link to="/admin/testimonals">Testimonail</Link></li>
+                    <li className='fs-6 fw-semibold mb-4'><Link to="/admin/teams">Team</Link></li>
                     <li className='fs-6 fw-semibold mb-4'>
                         <button onClick={logout} className='btn btn-danger'>
                             Logout

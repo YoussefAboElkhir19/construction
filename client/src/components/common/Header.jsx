@@ -1,6 +1,8 @@
-import React from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+<style>
+
+</style>
 const Header = () => {
   return (
     <header>
@@ -18,6 +20,7 @@ const Header = () => {
               <Nav.Link href="/project" className='nav-link'>Projects</Nav.Link>
               <Nav.Link href="/blog" className='nav-link'>Blogs</Nav.Link>
               <Nav.Link href="/contact_us" className='nav-link'>Contact Us</Nav.Link>
+              <Nav.Link href="/admin/login" className='nav-link'>Login</Nav.Link>
 
             </Nav>
           </Navbar.Collapse>

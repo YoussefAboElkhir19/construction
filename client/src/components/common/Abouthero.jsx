@@ -23,8 +23,8 @@ const About = () => {
                         data-aos="fade-left"
                         data-aos-delay="400"
                     >
-                        <span>About Us</span>
-                        <h2>Crafting structures that last a lifetime</h2>
+                        <h2>About Us</h2>
+                        <h3>Crafting structures that last a lifetime</h3>
                         <p>
                             Construction is the backbone of modern infrastructure. Roads, bridges,
                             airports, and public transportation systems are all products of

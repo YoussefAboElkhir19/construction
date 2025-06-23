@@ -29,11 +29,16 @@ import { default as EditArticle } from './components/backend/articles/Edit';
 import { default as ShowTestimonail } from './components/backend/Testimonails/Show';
 import { default as CreateTestimonail } from './components/backend/Testimonails/Create';
 import { default as EditTestimonail } from './components/backend/Testimonails/Edit';
+// import Team Routes 
+import { default as ShowTeam } from './components/backend/teams/Show';
+import { default as CreateTeam } from './components/backend/teams/Create';
+import { default as EditTeam } from './components/backend/teams/Edit';
 // Animation on scroll
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import ServiceDetails from './pages/ServiceDetails';
 import ProjectDetails from './pages/ProjectDetails';
+import ArticleDetails from './pages/ArticleDetails';
 
 function App() {
   useEffect(() => {
@@ -58,6 +63,8 @@ function App() {
           <Route path='/admin/login' element={<Login />} />
           <Route path='/service/:id' element={<ServiceDetails />} />
           <Route path='/project/:id' element={<ProjectDetails />} />
+          <Route path='/article/:id' element={<ArticleDetails />} />
+
           {/* // Route for admin panel */}
           <Route path='/admin/dashbord' element={<RequireAuth> <Dashbord /> </RequireAuth>}
           />
@@ -88,6 +95,13 @@ function App() {
           <Route path='/admin/testimonals/create' element={<RequireAuth> <CreateTestimonail />
           </RequireAuth>} />
           <Route path='/admin/testimonals/edit/:id' element={<RequireAuth> <EditTestimonail />
+          </RequireAuth>} />
+          {/* Route Team  */}
+          <Route path='/admin/teams' element={<RequireAuth> <ShowTeam />
+          </RequireAuth>} />
+          <Route path='/admin/teams/create' element={<RequireAuth> <CreateTeam />
+          </RequireAuth>} />
+          <Route path='/admin/teams/edit/:id' element={<RequireAuth> <EditTeam />
           </RequireAuth>} />
 
         </Routes>

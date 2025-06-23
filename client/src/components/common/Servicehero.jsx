@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { apiUrl, fileUrl } from './http';
 import { Link } from 'react-router-dom';
 
@@ -22,10 +22,10 @@ const Servicehero = () => {
         <section className='section-3 py-4'>
             <div className="container py-4">
                 <div className="section-header text-center">
-                    <span data-aos="fade-up"
-                        data-aos-delay="400">our services</span>
-                    <h2 data-aos="fade-right"
-                        data-aos-delay="400">Our contruction Services</h2>
+                    <h2 data-aos="fade-up"
+                        data-aos-delay="400">our services</h2>
+                    <h3 data-aos="fade-right"
+                        data-aos-delay="400">Our contruction Services</h3>
                     <p data-aos="fade-left"
                         data-aos-delay="400"> The construction industry is a major driver of economic growth</p>
                 </div>
@@ -62,7 +62,7 @@ const Servicehero = () => {
                 </div>
                 {/* Botton  */}
                 <div className='service-btn'>
-                    <Link to='/service' className='btn btn-primary large'>view all services</Link>
+                    <Link to='/service' className='btn btn-primary large'>View All Services</Link>
 
                 </div>
             </div>

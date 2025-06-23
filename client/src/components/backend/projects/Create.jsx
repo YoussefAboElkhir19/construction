@@ -221,7 +221,7 @@ const Create = ({ placeholder }) => {
                                             />
                                         </div>
 
-                                        <button className='btn btn-success' type='submit'>Submit</button>
+                                        <button className='mt-3 btn btn-success' type='submit'>Submit</button>
 
                                     </form>
 

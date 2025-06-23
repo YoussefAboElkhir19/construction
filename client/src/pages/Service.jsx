@@ -36,8 +36,8 @@ const Service = () => {
                         <div
                             data-aos="fade-up"
                             data-aos-delay="400" className="section-header text-center">
-                            <span>our services</span>
-                            <h2>Our contruction Services</h2>
+                            <h2>our services</h2>
+                            <h3>Our contruction Services</h3>
                             <p> The construction industry is a major driver of economic growth</p>
                         </div>
 

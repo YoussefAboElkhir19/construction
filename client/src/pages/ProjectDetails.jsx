@@ -66,43 +66,52 @@ const ProjectDetails = () => {
 
                         </div>
                         <div className="col-md-9">
-                            <div>
-                                <img className='w-100' src={`${fileUrl}upload/projects/large/${project.image}`} alt="project Image" />
+                            <div className="mb-4 rounded shadow-sm overflow-hidden bg-white">
+                                <img
+                                    className='w-100'
+                                    src={`${fileUrl}upload/projects/large/${project.image}`}
+                                    alt="project"
+                                    style={{ objectFit: "cover", maxHeight: 400 }}
+                                />
+                                <div className="p-4">
+                                    <div className='d-flex align-items-center mb-3'>
+                                        <span className="text-secondary me-2 fs-4" >Title:</span>
+                                        <span className="fs-5">{project.title}</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h5 className="text-secondary mb-2">Content:</h5>
+                                        <div
+                                            className="bg-light p-3 rounded"
+                                            style={{ minHeight: 80 }}
+                                            dangerouslySetInnerHTML={{ __html: project.content }}
+                                        />
+                                    </div>
+                                    <div className='row text-center'>
+                                        <div className='col-md-4 mb-3'>
+                                            <div className="border rounded p-3 h-100">
+                                                <h5 className="text-muted">Construction Type</h5>
+                                                <div className="fw-semibold">{project.construction_type}</div>
+                                            </div>
+                                        </div>
+                                        <div className='col-md-4 mb-3'>
+                                            <div className="border rounded p-3 h-100">
+                                                <h5 className="text-muted">Location</h5>
+                                                <div className="fw-semibold">{project.location}</div>
+                                            </div>
+                                        </div>
+                                        <div className='col-md-4 mb-3'>
+                                            <div className="border rounded p-3 h-100">
+                                                <h5 className="text-muted">Sector</h5>
+                                                <div className="fw-semibold">{project.sector}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h3 className="py-4">
-                                {project.title}
-                            </h3>
-                            <div className='my-3'>
-                                <h4>Content:</h4>
-                                <p>
-                                    {project.content}</p>
-                            </div>
-                            <div className='my-3'>
-                                <h4>Construction Type:</h4>
-                                <p>
-                                    {project.construction_type}</p>
-                            </div>
-                            <div className='my-3'>
-                                <h4>Location:</h4>
-                                <p>
-                                    {project.location}</p>
-                            </div>
-                            <div className='my-3'>
-                                <h4>Sector:</h4>
-                                <p>
-                                    {project.sector}</p>
-                            </div>
-                            <div dangerouslySetInnerHTML={{ __html: project.content }} >
-
-                            </div>
-
                         </div>
                     </div>
-                    {/* Testimonial */}
-                    <div className="row">
-                        <div className="col-md-12"></div>
 
-                    </div>
+
 
                 </div>
             </section>
